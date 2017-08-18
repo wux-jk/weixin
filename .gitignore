@@ -1,0 +1,22 @@
+
+# 忽略.idea文件以及目录
+.idea
+
+# 忽略out文件以及目录
+out
+
+# 忽略*.iml文件以及目录
+*.iml
+
+# 忽略build文件以及目录
+build
+
+# 忽略.gradle文件以及目录
+.gradle
+
+# 忽略包含bak的文件，排除目录
+*bak*
+!*bak*/
+
+#忽略classes文件以及目录
+classes
