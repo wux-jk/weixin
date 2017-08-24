@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jaxws="http://cxf.apache.org/jaxws"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://cxf.apache.org/jaxws
+	http://cxf.apache.org/schemas/jaxws.xsd">
+
+    <!-- cxf的核心配置  -->
+   <!-- <import resource="classpath:META-INF/cxf/cxf.xml" />-->
+    <!--<import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />-->
+    <!--<import resource="classpath:META-INF/cxf/cxf-extension-jaxws.xml" />-->
+    <!--<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />-->
+
+    <!-- 在com.jk下面扫描 @service @Controller、@Repository 等,不好归类的就是用@Component-->
+    <context:component-scan base-package="com.jk"/><!-- *代表扫描整个文件 -->
+    <!-- ↑没有这句话,就不在同一个空间,及不能加载接口  -->
+
+    <!--<jaxws:endpoint
+            id="WSUserServiceImpl"
+            implementor="com.jk.ws.user.WSUserServiceImpl"
+            address="/WSUserServiceImpl">
+        &lt;!&ndash; 配置输入拦截器 &ndash;&gt;
+        <jaxws:inInterceptors>
+            <bean class="com.jk.ws.AuthInterceptor" />
+            &lt;!&ndash; 配置输入日志拦截器：可以不配，我手痒 &ndash;&gt;
+            <bean class="org.apache.cxf.interceptor.LoggingInInterceptor"/>
+        </jaxws:inInterceptors>
+    </jaxws:endpoint>
+-->
+    <jaxws:endpoint
+            id="WSUserServiceImpl2"
+            implementor="com.jk.service.user.UserServiceImpl"
+            address="/WSUserServiceImpl2">
+        <!-- 配置输入拦截器 -->
+        <jaxws:inInterceptors>
+            <bean class="com.jk.ws.AuthInterceptor" />
+            <!-- 配置输入日志拦截器：可以不配，我手痒 -->
+            <bean class="org.apache.cxf.interceptor.LoggingInInterceptor"/>
+        </jaxws:inInterceptors>
+    </jaxws:endpoint>
+
+
+</beans>
